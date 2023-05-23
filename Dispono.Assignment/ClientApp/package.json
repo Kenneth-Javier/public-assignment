@@ -1,0 +1,101 @@
+{
+    "name": "dispono.assignment",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+        "@emotion/react": "^11.11.0",
+        "@mantine/core": "^6.0.11",
+        "@mantine/hooks": "^6.0.11",
+        "@tabler/icons-react": "^2.20.0",
+        "http-proxy-middleware": "^2.0.6",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-router-dom": "^6.11.2",
+        "react-scripts": "^5.0.1",
+        "rimraf": "^5.0.1",
+        "web-vitals": "^3.3.1",
+        "workbox-core": "^6.5.4",
+        "workbox-expiration": "^6.5.4",
+        "workbox-precaching": "^6.5.4",
+        "workbox-routing": "^6.5.4",
+        "workbox-strategies": "^6.5.4"
+    },
+    "devDependencies": {
+        "eslint": "^8.41.0",
+        "eslint-config-airbnb": "^19.0.4",
+        "eslint-plugin-import": "^2.27.5",
+        "eslint-plugin-jsx-a11y": "^6.7.1",
+        "eslint-plugin-react": "^7.32.2",
+        "eslint-plugin-react-hooks": "^4.6.0"
+    },
+    "overrides": {
+        "autoprefixer": "10.4.5"
+    },
+    "resolutions": {
+        "css-what": "^5.0.1",
+        "nth-check": "^3.0.1"
+    },
+    "scripts": {
+        "prestart": "node aspnetcore-https && node aspnetcore-react",
+        "start": "rimraf ./build && react-scripts start",
+        "build": "react-scripts build",
+        "test": "cross-env CI=true react-scripts test --env=jsdom",
+        "eject": "react-scripts eject",
+        "lint": "eslint ./src/"
+    },
+    "eslintConfig": {
+        "extends": [
+            "airbnb"
+        ],
+        "env": {
+            "browser": true
+        },
+        "rules": {
+            "react/prop-types": [
+                0
+            ],
+            "import/no-named-as-default": [
+                0
+            ],
+            "import/no-named-as-default-member": [
+                0
+            ],
+            "react/jsx-filename-extension": [
+                1,
+                {
+                    "extensions": [
+                        ".js",
+                        ".jsx"
+                    ]
+                }
+            ],
+            "indent": [
+                "error",
+                4
+            ],
+            "react/jsx-indent": [
+                "error",
+                4
+            ],
+            "react/jsx-indent-props": [
+                "error",
+                4
+            ],
+            "linebreak-style": [
+                0
+            ]
+        }
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    }
+}
