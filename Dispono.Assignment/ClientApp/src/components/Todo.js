@@ -44,6 +44,16 @@ export default function Todo({
             // Använd fetch för att göra en PATCH-request till /api/todos/{id}/toggle
             // Om resultatet returnerar ett OK skicka det uppdaterade statet av todo'n
             // till editTodo. Ta inspiration från funktionen "remove" ovan
+
+            const result = await fetch(`/api/todos/${id}/toggle`, { method: 'PATCH' });
+            if (result.ok) {
+                editTodo({
+                    id,
+                    description,
+                    createdAt,
+                    completedAt: completedAt === null ? new Date() : null,
+                });
+            }
         } finally {
             setMutating(false);
         }
@@ -86,6 +96,8 @@ export default function Todo({
                     // Där parametrarna skulle vara createdAt och completedAt
                     // Ha i åtanke att completedAt kan vara antingen en
                     // DateTime eller null
+
+                    `Skapad ${createdAt.toLocaleString()}. Avklarades ${completedAt === null ? 'Ej Avklarad' : completedAt.toLocaleString()}`
                 }
             </Text>
         </Card>
