@@ -58,7 +58,16 @@ public class TodosController : ControllerBase
         // Om exceptionet NotFoundException throwas, returnera "NotFound()"
         // Om operationen lyckas, returnera Ok och mappa affärsobjektet till en DTO
         // Ta inspiration från controller-metoderna "Add" och "Delete" 
-        throw new NotImplementedException();
+
+        try
+        {
+            var todo = await _todos.ToggleAsync(todoId);
+            return Ok(_mapper.Map<TodoDto>(todo));
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
     }
 
     [HttpDelete("{todoId:int}")]
