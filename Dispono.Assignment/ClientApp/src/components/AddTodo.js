@@ -40,9 +40,15 @@ export default function AddTodo({ addTodo }) {
                 // Ledning: använd Object.keys(details.errors) för att ta fram alla keys med fel
                 // Vi vet också att det är JSON som returneras så titta på if (result.ok)-blocket
                 // för att se hur vi gjort
-                const message = '';
 
+                const message = '';
                 setError(true);
+
+                Object.keys(details.errors).forEach((key) => {
+                    message += `${key}: ${details.errors[key].join(', ')}`;
+                    //message += error.map((e) => e.message.join(', ');
+                });
+
                 setErrorMessage(message);
             }
         } catch (_) {
