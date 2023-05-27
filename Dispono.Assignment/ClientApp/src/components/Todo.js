@@ -13,11 +13,9 @@ export default function Todo({
     id,
     description,
     // TODO ta bort denna när parametern används igen
-    // eslint-disable-next-line no-unused-vars
     createdAt,
     completedAt,
     // TODO ta bort denna när parametern används igen
-    // eslint-disable-next-line no-unused-vars
     editTodo,
     removeTodo,
 }) {
