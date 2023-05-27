@@ -30,7 +30,13 @@ public class TodoHandler : ITodoHandler
         // Om det inte finns en en uppgift med det id:et så throw:a NotFoundException
         // Använd metoden "Toggle" på entiteten, spara till databasen och returnera affärsobjektet 
         
-        throw new NotImplementedException();
+        var todo = await _db.Todos.FindAsync(todoId) ?? throw new NotFoundException();
+        
+        todo.Toggle();
+        await _db.Todos.AddAsync(todo);
+        await _db.SaveChangesAsync();
+
+        return todo;
     }
 
     public async Task DeleteAsync(int todoId)
