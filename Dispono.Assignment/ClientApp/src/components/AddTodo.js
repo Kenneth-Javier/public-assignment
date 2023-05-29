@@ -41,19 +41,27 @@ export default function AddTodo({ addTodo }) {
                 // Vi vet också att det är JSON som returneras så titta på if (result.ok)-blocket
                 // för att se hur vi gjort
 
-                const message = '';
                 setError(true);
+                const { details } = await result.json();
+                const errorMessages = Object.keys(details.errors)
+                    .map((key) => `${key}: ${details.errors[key].join(', ')}`)
+                    .join(', ');
 
-                Object.keys(details.errors).forEach((key) => {
-                    message += `${key}: ${details.errors[key].join(', ')}`;
-                    //message += error.map((e) => e.message.join(', ');
-                });
-
-                setErrorMessage(message);
+                setErrorMessage(errorMessages);
             }
-        } catch (_) {
+        } catch (addTodoError) {
             setError(true);
-            setErrorMessage('Ett oväntat fel uppstod');
+
+            if (addTodoError.response) {
+                const { details } = addTodoError.response.data;
+                const errorMessages = Object.keys(details.errors)
+                    .map((key) => `${key}: ${details.errors[key].join(', ')}`)
+                    .join(', ');
+
+                setErrorMessage(errorMessages);
+            } else {
+                setErrorMessage('Ett oväntat fel uppstod');
+            }
         } finally {
             setAdding(false);
         }
