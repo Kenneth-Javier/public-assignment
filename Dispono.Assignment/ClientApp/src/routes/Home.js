@@ -46,9 +46,7 @@ export default function Home() {
     // Sortera alla todo's efter id, det vill säga så att den med störst id alltid hamnar
     // först i listan. Ha i åtanke att initialState är null
 
-    if (todos !== null) {
-        const sortedTodos = todos.sort((a, b) => b.id - a.id);
-    }
+    const sortedTodos = todos !== null ? todos.sort((a, b) => b.id - a.id) : [];
 
     return (
         <>

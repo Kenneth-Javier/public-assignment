@@ -95,7 +95,7 @@ export default function Todo({
                     // Ha i åtanke att completedAt kan vara antingen en
                     // DateTime eller null
 
-                    `Skapad ${createdAt.toLocaleString()}. Avklarades ${completedAt === null ? 'Ej Avklarad' : completedAt.toLocaleString()}`
+                    ` Skapad ${createdAt.replace('T', ' ').split('.')[0]}. Avklarades ${completedAt === null ? 'Ej' : completedAt.replace('T', ' ').split('.')[0]}`
                 }
             </Text>
         </Card>
